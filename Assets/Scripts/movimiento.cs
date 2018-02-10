@@ -6,6 +6,9 @@ public class movimiento : MonoBehaviour {
 
     public float velocidad = 10.0f;
 
+
+    public GameObject manos;
+
     Animator animMuffin;
 
     SpriteRenderer spriteMuffin;
@@ -29,17 +32,27 @@ public class movimiento : MonoBehaviour {
 
         movX = Input.GetAxis("Horizontal");
         movY = Input.GetAxis("Vertical");
-        
-        if (movX < 0)
+
+        if (movX < 0) {
+            manos.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f));
             spriteMuffin.flipX = true;
-        else if (movX > 0)
+        }
+
+        else if (movX > 0) {
+            manos.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));
             spriteMuffin.flipX = false;
+        }
+            
 
         Vector3 direccion = new Vector3(movX, movY, 0.0f);
         animMuffin.SetFloat("velocidad", Vector3.Magnitude(direccion));
         
-        this.transform.Translate(direccion*velocidad*Time.deltaTime);
         
+        this.transform.Translate(direccion.normalized*velocidad*Time.deltaTime);
+        
+
+
+
     }
 
 
