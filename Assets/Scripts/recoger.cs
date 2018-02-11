@@ -36,9 +36,7 @@ public class recoger : MonoBehaviour {
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Joystick1Button0)){
-
-            Debug.Log("Boton A presionado");
-
+            
             if (estaCargando){
                 soltar();
             }
@@ -88,18 +86,13 @@ public class recoger : MonoBehaviour {
         objLetra.gameObject.GetComponent<BoxCollider2D>().enabled = true;
         objLetra.gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "LetraEnPiso";
         objLetra.gameObject.GetComponentInChildren<Canvas>().sortingLayerName = "LetraEnPiso";
-
-
+        
         estaCargando = false;
 
         this.gameObject.GetComponent<movimiento>().velocidad *= 2;
         animMuffin.Play("idle_Muffin");
-
-
+        
         objLetra.transform.position = posManos.transform.position + (posManos.transform.right * offsetSueloX);
-
-        //objLetra.gameObject.GetComponent<Rigidbody2D>().AddForce(posManos.transform.right*fuerza, ForceMode2D.Impulse);
-
 
         objLetra.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(posManos.transform.right.x,0.0f)*fuerza*1.2f;
         objLetra.gameObject.GetComponent<letra>().acelerada = true;
@@ -117,9 +110,6 @@ public class recoger : MonoBehaviour {
         this.gameObject.GetComponent<movimiento>().enabled=false;
 
         while (this.GetComponent<Rigidbody2D>().velocity.magnitude > 0.5f) {
-
-            Debug.Log("Velocidad : " + this.GetComponent<Rigidbody2D>().velocity.magnitude);
-
             yield return new WaitForSeconds(0.01f);
         }
 
@@ -149,7 +139,6 @@ public class recoger : MonoBehaviour {
     {
         if (invasor.gameObject.tag == "Letra") {
             puedeRecoger = false;
-            //objLetra = null;
         }  
     }
 
