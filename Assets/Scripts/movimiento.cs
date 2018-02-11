@@ -5,16 +5,17 @@ using UnityEngine;
 public class movimiento : MonoBehaviour {
 
     public float velocidad = 10.0f;
-
-
+    
     public GameObject manos;
 
-    Animator animMuffin;
+    [HideInInspector]
+    public Animator animMuffin;
 
     SpriteRenderer spriteMuffin;
 
     float movX;
     float movY;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +33,7 @@ public class movimiento : MonoBehaviour {
 
         movX = Input.GetAxis("Horizontal");
         movY = Input.GetAxis("Vertical");
+        
 
         if (movX < 0) {
             manos.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f));
@@ -54,9 +56,8 @@ public class movimiento : MonoBehaviour {
 
 
     }
-
-
-
+    
+    
 
 
 
