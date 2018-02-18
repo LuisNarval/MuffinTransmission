@@ -13,9 +13,12 @@ public class recoger : MonoBehaviour {
 
     public float fuerza = 2.0f;
 
+    [HideInInspector]
+    public bool estaCargando = false;
     bool puedeRecoger = false;
-    bool estaCargando = false;
-    bool estaTacleando = false;
+
+    [HideInInspector]
+    public bool estaTacleando = false;
     
 
     Animator animMuffin;
@@ -65,7 +68,7 @@ public class recoger : MonoBehaviour {
         animMuffin.Play("idleCargando_Muffin");
     }
     
-    void soltar()
+    public void soltar()
     {
         objLetra.gameObject.GetComponent<BoxCollider2D>().enabled = true;
         objLetra.gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "LetraEnPiso";

@@ -25,7 +25,12 @@ public class meta : MonoBehaviour {
     }
 
 
-
+    private void OnTriggerEnter2D(Collider2D invasor)
+    {
+        if (invasor.gameObject.tag == "Letra") {
+            invasor.gameObject.GetComponentInChildren<caerLetra>().aSalvo = true;
+        }
+    }
 
 
 }

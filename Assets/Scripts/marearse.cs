@@ -22,6 +22,14 @@ public class marearse : MonoBehaviour {
 
     IEnumerator corrutineNoquear()
     {
+        this.GetComponent<movimiento>().enabled=false;
+
+        if (this.GetComponent<recoger>().estaCargando) {
+            this.GetComponent<recoger>().soltar();
+        }
+
+        this.GetComponent<recoger>().enabled = false;
+
         this.GetComponent<Rigidbody2D>().mass = 1100;
         animMuffin.Play("noqueado_Muffin");
         
@@ -29,6 +37,9 @@ public class marearse : MonoBehaviour {
         
         animMuffin.Play("idle_Muffin");
         this.GetComponent<Rigidbody2D>().mass = 10;
+
+        this.GetComponent<movimiento>().enabled = true;
+        this.GetComponent<recoger>().enabled = true;
     }
 
 

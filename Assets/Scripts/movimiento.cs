@@ -46,7 +46,7 @@ public class movimiento : MonoBehaviour {
         }
             
 
-        Vector3 direccion = new Vector3(movX, movY, 0.0f);
+        Vector3 direccion = new Vector3(movX, 0.0f, movY);
         animMuffin.SetFloat("velocidad", Vector3.Magnitude(direccion));
         
         
